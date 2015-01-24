@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cups
 PKG_VERSION:=1.5.4
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-source.tar.bz2
 PKG_SOURCE_URL:= http://www.cups.org/software/$(PKG_VERSION)
@@ -28,7 +28,7 @@ define Package/cups
 $(call Package/cups/Default)
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+libcups +libcupsmime +libcupscgi +libcupsppdc +libusb-1.0
+  DEPENDS:=+libcups +libcupsmime +libcupscgi +libcupsppdc +libusb-1.0 +libacl
   TITLE:=Common UNIX Printing System (daemon)
 endef
 
@@ -668,12 +668,6 @@ define Build/InstallDev
 endef
 
 $(eval $(call BuildPackage,cups))
-$(eval $(call BuildPackage,libcups))
-$(eval $(call BuildPackage,libcupscgi))
-$(eval $(call BuildPackage,libcupsdriver))
-$(eval $(call BuildPackage,libcupsimage))
-$(eval $(call BuildPackage,libcupsmime))
-$(eval $(call BuildPackage,libcupsppdc))
 $(eval $(call BuildPackage,cups-bsd))
 $(eval $(call BuildPackage,cups-client))
 $(eval $(call BuildPackage,cups-filters))
