@@ -8,12 +8,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=hplip
-PKG_VERSION:=3.9.12
-PKG_RELEASE:=4
+PKG_VERSION:=3.14.10
+PKG_RELEASE:=5
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=@SF/hplip
-PKG_MD5SUM:=2b0906b4a57b437988829557ca62adfd
+PKG_MD5SUM:=7af44ee1c4312b00d2269c1b25008f73
 
 PKG_BUILD_DEPENDS := python
 PKG_FIXUP:=autoreconf
@@ -40,6 +40,9 @@ CONFIGURE_ARGS += \
 	--disable-doc-build \
 	--disable-foomatic-xml-install \
 	--disable-dbus-build
+
+TARGET_CFLAGS += \
+    -I$(STAGING_DIR)/usr/include/libusb-1.0
 
 define Build/Configure
 	$(call Build/Configure/Default,\
